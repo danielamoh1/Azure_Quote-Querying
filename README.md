@@ -222,7 +222,7 @@ https://github.com/user-attachments/assets/27a0371f-92e0-4db4-b943-9c0b4ba576ab
 
 1. Manually create **Storage Account** in `daniel-terraform-rg`:
 
-   * Name: `tfstateinfraamohj001`.
+   * Name: `tfstateinfraamoj001`.
    * Region: East US.
    * Kind: StorageV2.
    * SKU: Standard LRS.
@@ -234,7 +234,7 @@ Terraform backend config (`provider.tf`):
 terraform {
   backend "azurerm" {
     resource_group_name  = "daniel-terraform-rg"
-    storage_account_name = "tfstateinfraamohj001"
+    storage_account_name = "tfstateinfraamoj001"
     container_name       = "tfstate"
     key                  = "infra.tfstate"
   }
@@ -344,6 +344,93 @@ VALUES ('Success at anything will always come down to this: focus and effort, an
 * **Terraform lock error** → run `terraform force-unlock <LOCK_ID>`.
 * **App Service DB access error** → check VNet Integration + private endpoint DNS resolution.
 * **Node.js version mismatch** → App Service supports only up to Node.js 20 LTS.
+
+---------------
+
+List of People the quotes are from:
+=======
+
+Here’s the complete list of authors extracted from your SQL query (with duplicates removed):
+
+Franklin D. Roosevelt
+
+Albert Einstein
+
+Theodore Roosevelt
+
+Aristotle
+
+Oprah Winfrey
+
+Winston Churchill
+
+Nelson Mandela
+
+Buddha
+
+Pablo Picasso
+
+William James
+
+Napoleon Hill
+
+Japanese Proverb
+
+Peter Drucker
+
+Steve Jobs
+
+Louisa May Alcott
+
+Ralph Waldo Emerson
+
+Eleanor Roosevelt
+
+John Lennon
+
+Will Rogers
+
+Ernest Hemingway
+
+Norman Vaughan
+
+Wayne Gretzky
+
+Chris Grosser
+
+Thomas Edison
+
+Walt Whitman
+
+Lao Tzu
+
+C.S. Lewis
+
+Confucius
+
+Muhammad Ali
+
+Martin Luther King Jr.
+
+Mark Twain
+
+Oscar Wilde
+
+A.P.J. Abdul Kalam
+
+Frank Sinatra
+
+Bruce Lee
+
+Mahatma Gandhi
+
+René Descartes
+
+Hasidic Proverb
+
+Henry David Thoreau
+
+Roy T. Bennett
 
 ---------------
 
