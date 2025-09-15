@@ -71,7 +71,7 @@ This project provisions a **Quotes Web Application** that:
 * Azure subscription with contributor rights.
 * Installed locally:
 
-  * Node.js 20 LTS
+  * Node.js 20 LTS OR  Node.js 22 LTS
   * Terraform
   * Azure CLI
 * VS Code (with Azure extension optional).
