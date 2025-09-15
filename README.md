@@ -53,30 +53,31 @@ This project provisions a **Quotes Web Application** that:
 
 -----------------------
 
-This application has been architected for high availability by deploying resources across two Azure regions: West US 3 (primary) and Canada Central (secondary). The web apps are fronted by Azure Traffic Manager, which intelligently routes traffic between the two regions, while the databases are configured with a SQL failover group, ensuring continuity in case of regional outages. This means that if the primary region (West US 3) becomes unavailable, the secondary region (Canada Central) can seamlessly take over, minimizing downtime and ensuring resilience.
+This application has been architected for high availability within a single Azure region (West US 3) by distributing resources across two Availability Zones (AZ-1 and AZ-2).
 
-For the purposes of this demo, I will only be showcasing the deployment and functionality from the West US 3 region. The Canada Central resources remain fully provisioned in standby mode as part of the high-availability design.
+**The Web App runs in an App Service Plan with zone balancing enabled, ensuring requests are automatically routed across AZ-1 and AZ-2.
 
-## 📊 High Availability & Security Flow
+**The Azure SQL Database is deployed in General Purpose, Serverless, Zone-Redundant mode, which replicates the database transparently across both AZs.
+
+**Connectivity between the Web App and SQL Database is handled through a Private Endpoint, ensuring no public exposure of sensitive data.
+
+**All PII data is encrypted, and secrets are stored in Azure Key Vault.
+
+For this demo, I will only showcase deployment and functionality from Availability Zone 1 (AZ-1) in West US 3, though both zones are active and provide redundancy in case of zone failure.
+
+## High Availability & Security Flow
 
 ```mermaid
 flowchart TD
-    U[Users] --> TM[Azure Traffic Manager]
-
-    TM --> WA1[Web App West US3 : VNet Integrated + Key Vault]
-    TM --> WA2[Web App Canada Central : VNet Integrated + Key Vault]
-
-    WA1 --> NSG1[NSG and Firewall West US3]
-    WA2 --> NSG2[NSG and Firewall Canada Central]
-
-    NSG1 --> PE1[Private Endpoint West US3]
-    NSG2 --> PE2[Private Endpoint Canada Central]
-
-    PE1 --> DB1[SQL Database West US3 : Encrypted + PII Locked]
-    PE2 --> DB2[SQL Database Canada Central : Encrypted + PII Locked]
-
-    DB1 <--> FG[Failover Group : Auto Replication + DR Ready]
-    DB2 <--> FG
+    U[🌍 Users] --> WA[💻 Web App (West US 3)]
+    WA -->|VNet + Private Endpoint| DB[🗄️ SQL Database (West US 3)]
+    subgraph ZONES [Availability Zones in West US 3]
+        WA -.replicated across AZs.-> AZ1[AZ-1]
+        WA -.replicated across AZs.-> AZ2[AZ-2]
+        DB -.zone redundant.-> AZ1_DB[AZ-1]
+        DB -.zone redundant.-> AZ2_DB[AZ-2]
+    end
+    DB --> KV[🔐 Azure Key Vault - Secrets]
 ```
 
 ---------------
