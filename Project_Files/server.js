@@ -11,10 +11,10 @@ app.set('view engine', 'ejs');
 
 // ✅ Explicit SQL Config (with trustServerCertificate: true)
 const dbConfig = {
-  user: "quotes-sql-admin",
-  password: "}5K>kpE56?P={ZmT{7",
-  server: "quotes-sqlserver-tf.database.windows.net",
-  database: "quotes-db-tf",
+  user: "[your_username]",
+  password: "[your_password]",
+  server: "[your_db_servername]",
+  database: "[your_dbname]",
   options: {
     encrypt: true,                // required for Azure SQL
     trustServerCertificate: true  // ✅ now set to true
