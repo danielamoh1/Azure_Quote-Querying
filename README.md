@@ -52,6 +52,11 @@ This project provisions a **Quotes Web Application** that:
 <img width="1268" height="677" alt="image" src="https://github.com/user-attachments/assets/f6d4e074-3e78-40d0-9868-5d27a9010e8c" />
 
 
+`This application has been architected for high availability by deploying resources across two Azure regions: West US 3 (primary) and Canada Central (secondary). The web apps are fronted by Azure Traffic Manager, which intelligently routes traffic between the two regions, while the databases are configured with a SQL failover group, ensuring continuity in case of regional outages. This means that if the primary region (West US 3) becomes unavailable, the secondary region (Canada Central) can seamlessly take over, minimizing downtime and ensuring resilience.
+
+For the purposes of this demo, ill will only be showcasing the deployment and functionality from the West US 3 region. The Canada Central resources remain fully provisioned in standby mode as part of the high-availability design.`
+
+
 
 ---------------
 
