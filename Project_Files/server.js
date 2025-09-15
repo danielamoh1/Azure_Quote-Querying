@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
-// ✅ Explicit SQL Config (with trustServerCertificate: true)
+// Explicit SQL Config (with trustServerCertificate: true)
 const dbConfig = {
   user: "[your_username]",
   password: "[your_password]",
@@ -17,7 +17,7 @@ const dbConfig = {
   database: "[your_dbname]",
   options: {
     encrypt: true,                // required for Azure SQL
-    trustServerCertificate: true  // ✅ now set to true
+    trustServerCertificate: true  // now set to true
   }
 };
 
@@ -42,7 +42,7 @@ app.post('/search', async (req, res) => {
 
     res.render('index', { quotes: result.recordset, search });
   } catch (err) {
-    console.error('❌ DB Error:', err);   // ✅ logs the exact SQL error
+    console.error('DB Error:', err);   // logs the exact SQL error
     res.status(500).send('Database error');
   }
 });
@@ -56,11 +56,11 @@ app.get('/random', async (req, res) => {
     `);
     res.json(result.recordset[0]);
   } catch (err) {
-    console.error('❌ DB Error:', err);   // ✅ logs the exact SQL error
+    console.error('DB Error:', err);   // logs the exact SQL error
     res.status(500).send('Database error');
   }
 });
 
 app.listen(port, () => {
-  console.log(`✅ App running at http://localhost:${port}`);
+  console.log(`App running at http://localhost:${port}`);
 });
