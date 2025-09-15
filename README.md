@@ -181,6 +181,8 @@ az --version
 
 ## 🤖 Terraform Automation
 
+https://github.com/user-attachments/assets/27a0371f-92e0-4db4-b943-9c0b4ba576ab
+
 ### Backend State
 
 1. Manually create **Storage Account** in `daniel-terraform-rg`:
