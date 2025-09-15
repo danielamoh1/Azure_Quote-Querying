@@ -70,6 +70,12 @@ This project provisions a **Quotes Web Application** that:
  main.tf, provider.tf, sql.tf, webapp.tf, outputs.tf → Terraform configuration.
  README.md → Documentation (this file).
 
+----------------
+
+IN Action:
+
+https://github.com/user-attachments/assets/14050269-c850-45fb-b452-3c7779719bcb
+
 ---------------
 
 ## ✅ Prerequisites
