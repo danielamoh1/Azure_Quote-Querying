@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quote Search</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    input { padding: 8px; width: 300px; }
+    button { padding: 8px; }
+    .quote { margin: 15px 0; padding: 10px; border-left: 4px solid #0078d7; }
+    .author { font-weight: bold; margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Quote Search</h1>
+
+  <form method="POST" action="/search">
+    <input type="text" name="search" placeholder="Search by keyword or author" value="<%= search %>" />
+    <button type="submit">Search</button>
+  </form>
+
+  <% if (quotes.length > 0) { %>
+    <h2>Results:</h2>
+    <% quotes.forEach(q => { %>
+      <div class="quote">
+        <div><%= q.Quote %></div>
+        <div class="author">— <%= q.Author %></div>
+      </div>
+    <% }) %>
+  <% } else if (search) { %>
+    <p>No results found for "<%= search %>".</p>
+  <% } %>
+</body>
+</html>
