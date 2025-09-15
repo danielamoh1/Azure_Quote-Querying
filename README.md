@@ -78,7 +78,7 @@ https://github.com/user-attachments/assets/14050269-c850-45fb-b452-3c7779719bcb
 
 ---------------
 
-## ✅ Prerequisites
+## Prerequisites
 
 * Azure subscription with contributor rights.
 * Installed locally:
@@ -117,7 +117,7 @@ az --version
    * `owner = danielamoh`
    * `environment = dev`
 
-✅ Both RGs should now exist.
+Both RGs should now exist.
 
 ---------------
 
@@ -134,7 +134,7 @@ az --version
 5. Tags → apply project tags.
 6. Click **Review + Create** → **Create**.
 
-✅ DB deployed with no public access.
+DB deployed with no public access.
 
 ---------------
 
@@ -149,7 +149,7 @@ az --version
    * `webapp-subnet` → `11.0.1.0/24`.
 5. Create.
 
-✅ VNet with two subnets ready.
+VNet with two subnets ready.
 
 ---------------
 
@@ -163,7 +163,7 @@ az --version
 6. Networking → enable **VNet Integration** (use `webapp-subnet`).
 7. Configuration → add env vars later (via Terraform).
 
-✅ App Service created.
+App Service created.
 
 ---------------
 
@@ -175,7 +175,7 @@ az --version
 4. Access policies → add Web App system identity.
 5. Secrets → add secret `db-passwd`.
 
-✅ Key Vault ready.
+Key Vault ready.
 
 ---------------
 
@@ -243,7 +243,7 @@ terraform plan
 terraform apply
 ```
 
-✅ Infra created with secure networking + state locking.
+Infra created with secure networking + state locking.
 
 ---------------
 
