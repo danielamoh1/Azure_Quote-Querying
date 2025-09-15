@@ -56,26 +56,28 @@ This application has been architected for high availability by deploying resourc
 
 For the purposes of this demo, ill will only be showcasing the deployment and functionality from the West US 3 region. The Canada Central resources remain fully provisioned in standby mode as part of the high-availability design.
 
-## 📊 High Availability & Security Architecture
+### 📊 High Availability, Networking & Security Architecture (Vertical)
 
 ```mermaid
 flowchart TB
-    Users([🌍 Users]) --> TM[🔀 Azure Traffic Manager]
+    Users([Users 🌍]) --> TM[Azure Traffic Manager 🔀]
 
-    TM --> WA1[💻 Web App (West US 3)\n- VNet Integrated\n- Key Vault]
-    TM --> WA2[💻 Web App (Canada Central)\n- VNet Integrated\n- Key Vault]
+    TM --> WA1[Web App (West US 3)\nVNet Integrated + Key Vault]
+    TM --> WA2[Web App (Canada Central)\nVNet Integrated + Key Vault]
 
-    WA1 --> PE1[🔗 Private Endpoint (West US 3)]
-    WA2 --> PE2[🔗 Private Endpoint (Canada Central)]
+    %% Networking Security Groups
+    WA1 --> NSG1[NSG + Firewall (West US 3)]
+    WA2 --> NSG2[NSG + Firewall (Canada Central)]
 
-    PE1 --> DB1[(🗄️ SQL DB (West US 3)\n- Encrypted\n- PII Locked)]
-    PE2 --> DB2[(🗄️ SQL DB (Canada Central)\n- Encrypted\n- PII Locked)]
+    NSG1 --> PE1[Private Endpoint (West US 3)]
+    NSG2 --> PE2[Private Endpoint (Canada Central)]
 
-    DB1 <--> FG[⚡ Failover Group\n- Auto Replication\n- DR Ready]
+    PE1 --> DB1[(SQL DB (West US 3)\nEncrypted + PII Locked)]
+    PE2 --> DB2[(SQL DB (Canada Central)\nEncrypted + PII Locked)]
+
+    DB1 <--> FG[Failover Group\nAuto Replication + DR Ready]
     DB2 <--> FG
 ```
-
-
 
 ---------------
 
