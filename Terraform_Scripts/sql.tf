@@ -1,4 +1,4 @@
-# Generate password
+# Generate SQL password
 resource "random_password" "sql" {
   length  = 18
   special = true
@@ -14,24 +14,15 @@ resource "azurerm_mssql_server" "sql" {
   administrator_login_password = random_password.sql.result
 }
 
-# SQL Database
+# SQL Database (serverless + HA across AZs)
 resource "azurerm_mssql_database" "db" {
-  name      = "quotes-db-tf"
-  server_id = azurerm_mssql_server.sql.id
-  sku_name  = "S0"
-}
-
-# Private Endpoint for SQL
-resource "azurerm_private_endpoint" "sql_pe" {
-  name                = "quotes-sql-pe"
-  location            = azurerm_resource_group.app.location
-  resource_group_name = azurerm_resource_group.app.name
-  subnet_id           = azurerm_subnet.db_subnet.id
-
-  private_service_connection {
-    name                           = "quotes-sql-privateservice"
-    private_connection_resource_id = azurerm_mssql_server.sql.id
-    subresource_names              = ["sqlServer"]
-    is_manual_connection           = false
-  }
+  name                        = "quotes-db-tf"
+  server_id                   = azurerm_mssql_server.sql.id
+  sku_name                    = "GP_S_Gen5_1"
+  max_size_gb                 = 32
+  zone_redundant              = true
+  auto_pause_delay_in_minutes = 60
+  min_capacity                = 0.5
+  read_scale                  = true
+  storage_account_type        = "LRS"
 }
