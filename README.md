@@ -58,26 +58,35 @@ For the purposes of this demo, ill will only be showcasing the deployment and fu
 
 ### 📊 High Availability, Networking & Security Architecture (Vertical)
 
-```mermaid
-flowchart TB
-    Users([Users 🌍]) --> TM[Azure Traffic Manager 🔀]
+🌍 Users
+   │
+   ▼
+┌─────────────────────┐
+│ Azure Traffic       │
+│ Manager             │
+└─────────────────────┘
+      /       \
+     ▼         ▼
+┌───────────────┐    ┌───────────────┐
+│ Web App       │    │ Web App       │
+│ (West US 3)   │    │ (Canada Cen.) │
+│ VNet + KeyVault│   │ VNet + KeyVault│
+└───────────────┘    └───────────────┘
+     │                   │
+     ▼                   ▼
+  NSG/Firewall        NSG/Firewall
+     │                   │
+     ▼                   ▼
+ Private EP           Private EP
+     │                   │
+     ▼                   ▼
+   SQL DB              SQL DB
+   Encrypted + PII     Encrypted + PII
+     \___________________/
+              │
+              ▼
+     Failover Group
 
-    TM --> WA1[Web App (West US 3)\nVNet Integrated + Key Vault]
-    TM --> WA2[Web App (Canada Central)\nVNet Integrated + Key Vault]
-
-    %% Networking Security Groups
-    WA1 --> NSG1[NSG + Firewall (West US 3)]
-    WA2 --> NSG2[NSG + Firewall (Canada Central)]
-
-    NSG1 --> PE1[Private Endpoint (West US 3)]
-    NSG2 --> PE2[Private Endpoint (Canada Central)]
-
-    PE1 --> DB1[(SQL DB (West US 3)\nEncrypted + PII Locked)]
-    PE2 --> DB2[(SQL DB (Canada Central)\nEncrypted + PII Locked)]
-
-    DB1 <--> FG[Failover Group\nAuto Replication + DR Ready]
-    DB2 <--> FG
-```
 
 ---------------
 
