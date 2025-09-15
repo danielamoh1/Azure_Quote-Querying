@@ -47,6 +47,12 @@ This project provisions a **Quotes Web Application** that:
 * Secures DB credentials in **Azure Key Vault**.
 * Is provisioned and managed with **Terraform**.
 
+<img width="1273" height="830" alt="image" src="https://github.com/user-attachments/assets/5cb2fd47-e8bb-4cf8-b8ea-64afd1f04893" />
+
+<img width="1268" height="677" alt="image" src="https://github.com/user-attachments/assets/f6d4e074-3e78-40d0-9868-5d27a9010e8c" />
+
+
+
 ---------------
 
 ## 🏗 Architecture
