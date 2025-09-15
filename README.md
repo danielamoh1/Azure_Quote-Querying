@@ -55,13 +55,13 @@ This project provisions a **Quotes Web Application** that:
 
 This application has been architected for high availability within a single Azure region (West US 3) by distributing resources across two Availability Zones (AZ-1 and AZ-2).
 
-**The Web App runs in an App Service Plan with zone balancing enabled, ensuring requests are automatically routed across AZ-1 and AZ-2.
+**- The Web App runs in an App Service Plan with zone balancing enabled, ensuring requests are automatically routed across AZ-1 and AZ-2.**
 
-**The Azure SQL Database is deployed in General Purpose, Serverless, Zone-Redundant mode, which replicates the database transparently across both AZs.
+**- The Azure SQL Database is deployed in General Purpose, Serverless, Zone-Redundant mode, which replicates the database transparently across both AZs.**
 
-**Connectivity between the Web App and SQL Database is handled through a Private Endpoint, ensuring no public exposure of sensitive data.
+**- Connectivity between the Web App and SQL Database is handled through a Private Endpoint, ensuring no public exposure of sensitive data.**
 
-**All PII data is encrypted, and secrets are stored in Azure Key Vault.
+**- All PII data is encrypted, and secrets are stored in Azure Key Vault.**
 
 For this demo, I will only showcase deployment and functionality from Availability Zone 1 (AZ-1) in West US 3, though both zones are active and provide redundancy in case of zone failure.
 
