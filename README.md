@@ -350,8 +350,6 @@ VALUES ('Success at anything will always come down to this: focus and effort, an
 List of People the quotes are from:
 =======
 
-Here’s the complete list of authors extracted from your SQL query (with duplicates removed):
-
 Franklin D. Roosevelt
 
 Albert Einstein
