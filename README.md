@@ -60,23 +60,23 @@ For the purposes of this demo, ill will only be showcasing the deployment and fu
 
 ```mermaid
 flowchart TD
-    U[Users 🌍] --> TM[Azure Traffic Manager 🔀]
+    U[Users] --> TM[Azure Traffic Manager]
 
-    TM --> WA1[Web App (West US 3) - VNet Integrated + Key Vault]
-    TM --> WA2[Web App (Canada Central) - VNet Integrated + Key Vault]
+    TM --> WA1[Web App West US3 : VNet Integrated + Key Vault]
+    TM --> WA2[Web App Canada Central : VNet Integrated + Key Vault]
 
-    WA1 --> NSG1[NSG + Firewall (West US 3)]
-    WA2 --> NSG2[NSG + Firewall (Canada Central)]
+    WA1 --> NSG1[NSG and Firewall West US3]
+    WA2 --> NSG2[NSG and Firewall Canada Central]
 
-    NSG1 --> PE1[Private Endpoint (West US 3)]
-    NSG2 --> PE2[Private Endpoint (Canada Central)]
+    NSG1 --> PE1[Private Endpoint West US3]
+    NSG2 --> PE2[Private Endpoint Canada Central]
 
-    PE1 --> DB1[SQL DB (West US 3) - Encrypted + PII Locked]
-    PE2 --> DB2[SQL DB (Canada Central) - Encrypted + PII Locked]
+    PE1 --> DB1[SQL Database West US3 : Encrypted + PII Locked]
+    PE2 --> DB2[SQL Database Canada Central : Encrypted + PII Locked]
 
-    DB1 <--> FG[Failover Group - Auto Replication + DR Ready]
+    DB1 <--> FG[Failover Group : Auto Replication + DR Ready]
     DB2 <--> FG
-  ```  
+```
 
 ---------------
 
