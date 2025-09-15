@@ -194,7 +194,7 @@ VNet with two subnets ready.
 2. Name: `quotes-webapp-tf`.
 3. Runtime: Node.js **20 LTS**.
 4. Region: West US 3.
-5. Pricing: **B1** (dev/test budget-friendly).
+5. Pricing: **General Purpose**.
 6. Networking → enable **VNet Integration** (use `webapp-subnet`).
 7. Configuration → add env vars later (via Terraform).
 
