@@ -69,15 +69,23 @@ For this demo, I will only showcase deployment and functionality from Availabili
 
 ```mermaid
 flowchart TD
-    U[🌍 Users] --> WA[💻 Web App (West US 3)]
-    WA -->|VNet + Private Endpoint| DB[🗄️ SQL Database (West US 3)]
-    subgraph ZONES [Availability Zones in West US 3]
-        WA -.replicated across AZs.-> AZ1[AZ-1]
-        WA -.replicated across AZs.-> AZ2[AZ-2]
-        DB -.zone redundant.-> AZ1_DB[AZ-1]
-        DB -.zone redundant.-> AZ2_DB[AZ-2]
-    end
-    DB --> KV[🔐 Azure Key Vault - Secrets]
+    U[Users] --> TM[Azure Traffic Manager]
+
+    TM --> WA1[Web App West US3 - AZ1 : VNet Integrated + Key Vault]
+    TM --> WA2[Web App West US3 - AZ2 : VNet Integrated + Key Vault]
+
+    WA1 --> NSG1[NSG + Firewall AZ1]
+    WA2 --> NSG2[NSG + Firewall AZ2]
+
+    NSG1 --> PE1[Private Endpoint West US3 - AZ1]
+    NSG2 --> PE2[Private Endpoint West US3 - AZ2]
+
+    PE1 --> DB1[SQL Database West US3 - AZ1 : Encrypted + PII Locked]
+    PE2 --> DB2[SQL Database West US3 - AZ2 : Encrypted + PII Locked]
+
+    DB1 <--> FG[Zone-Redundant HA : Auto Replication + DR Ready]
+    DB2 <--> FG
+
 ```
 
 ---------------
