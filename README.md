@@ -56,8 +56,9 @@ This application has been architected for high availability by deploying resourc
 
 For the purposes of this demo, ill will only be showcasing the deployment and functionality from the West US 3 region. The Canada Central resources remain fully provisioned in standby mode as part of the high-availability design.
 
-### 📊 High Availability, Networking & Security Architecture (Vertical)
+### 📊 High Availability, Networking & Security Architecture 
 
+```mermaid
 🌍 Users
    │
    ▼
@@ -86,6 +87,7 @@ For the purposes of this demo, ill will only be showcasing the deployment and fu
               │
               ▼
      Failover Group
+```
 
 
 ---------------
